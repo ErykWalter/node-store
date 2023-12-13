@@ -1,6 +1,10 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 
+// use sequelize to connect to a postgres database using the .env file
+import { Sequelize } from "sequelize";
+
+
 dotenv.config();
 
 const app: Express = express();
