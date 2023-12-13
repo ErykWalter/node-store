@@ -1,17 +1,23 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-
-// use sequelize to connect to a postgres database using the .env file
-import { Sequelize } from "sequelize";
-
+import Item from "./db/Item";
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
+app.set("view engine", "ejs");
+app.set("views", "./src/views");
+
+
 app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server");
+  res.send("Hello World!");
+});
+
+app.get("/items", async (req: Request, res: Response) => {
+  const items = await Item.findAll();
+  res.render("items", { items });
 });
 
 app.listen(port, () => {

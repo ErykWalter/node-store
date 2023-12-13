@@ -1,0 +1,17 @@
+<!-- site which will show items in the database with name, quanitity and button 'add to chart' -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Items</title>
+</head>
+<body>
+  <h1>Items for Sale</h1>
+  <ul>
+    <% items.forEach(item => { %>
+      <li><%= item.name %> - $<%= item.quantity %></li>
+    <% }); %>
+  </ul>
+</body>
+</html>
