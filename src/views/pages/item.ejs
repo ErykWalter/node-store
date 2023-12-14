@@ -1,0 +1,10 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+  <div class="container">
+    <h1> <%= item.name %> </h1>
+    <p>Quantity: <%= item.quantity %> </p>
+  </div>
+  <form action="../add-to-basket/<%= item.id %>" method="POST">
+    <button type="submit" class="btn btn-primary">Add to basket</button>
+  </form>
+<%- include('../partials/footer') %>

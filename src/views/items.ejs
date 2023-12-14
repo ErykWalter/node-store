@@ -1,17 +1,37 @@
 <!-- site which will show items in the database with name, quanitity and button 'add to chart' -->
-<!DOCTYPE html>
-<html lang="en">
+<!-- this page will be shown when user click on 'shop' in the navbar -->
+<!-- use bootstrap to make the page looks better -->
+<!Doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Items</title>
+  <title>Shopping List</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-  <h1>Items for Sale</h1>
-  <ul>
-    <% items.forEach(item => { %>
-      <li><%= item.name %> - $<%= item.quantity %></li>
-    <% }); %>
-  </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Shopping List</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% items.forEach(function(item){ %>
+              <tr>
+                <!-- move user to the item's details page when click on the item's name -->
+                <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </body>
-</html>

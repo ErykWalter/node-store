@@ -3,16 +3,16 @@
 // sessionId is a foreign key referencing the sessions table
 // itemId is a foreign key referencing the items table
 
-import { Sequelize, DataTypes, Model, InferAttributes, InferCreationAttributes, ForeignKey } from 'sequelize'
+import { DataTypes, Model, InferAttributes, InferCreationAttributes, ForeignKey, CreationOptional } from 'sequelize'
 import sequelize from './Connection'
 import Session from './Session'
 import Item from './Item'
 
 // Define the Basket model for the "basket" table
 class Basket extends Model<InferAttributes<Basket>, InferCreationAttributes<Basket>> implements Basket {
-    declare public id: number;
+    declare public id: CreationOptional<number>;
     declare public sessionId: ForeignKey<Session['sid']>;
-    declare public itemId: number;
+    declare public itemId: ForeignKey<Item['id']>;
 }
 
 Basket.init({
@@ -39,6 +39,7 @@ Basket.init({
     sequelize,
 })
 
-Basket.sync()
+Basket.belongsTo(Session, { foreignKey: 'sessionId' });
+Basket.belongsTo(Item, { foreignKey: 'itemId' });
 
 export default Basket;

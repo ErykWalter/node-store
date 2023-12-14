@@ -1,6 +1,5 @@
 import { Sequelize, DataTypes, Model, CreationOptional,InferAttributes, InferCreationAttributes, ForeignKey } from 'sequelize'
 import sequelize from './Connection'
-
 // Define the Item model for the "items" table
 // it has two columns: id and name
 
@@ -22,12 +21,13 @@ Item.init({
     },
     quantity: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            min: 0
+        }
     },
 }, {
     sequelize
 })
-
-Item.sync()
 
 export default Item;

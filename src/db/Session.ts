@@ -18,6 +18,4 @@ Session.init({
     modelName: 'session',
 })
 
-Session.sync()
-
 export default Session;

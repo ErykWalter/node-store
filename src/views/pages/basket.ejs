@@ -1,0 +1,26 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+<h1>Your basket</h1>
+<p>Client ID: <%= sessionId %></p>
+<!-- list of items in the basket a table -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% basket.forEach(function(b) { %>
+      <tr>
+        <td><%= b.Item.name %></td>
+        <td><%= 1 %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+<!-- form to checkout -->
+<form action="../checkout" method="POST">
+  <button type="submit" class="btn btn-primary">Checkout</button>
+</form>
+<%- include('../partials/footer') %>

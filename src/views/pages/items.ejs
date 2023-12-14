@@ -1,0 +1,19 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+<!-- each item is a card, after clicking on it, it will take you to the item page -->
+<div class="container">
+  <div class="row row-cols-4 row-cols-md-4 g-4">
+    <% items.forEach(function(item) { %>
+      <div class="col-sm-4">
+        <div class="card">
+          <img src="public/fruits.png" class="card-img-top pe-5 ps-5 pt-4" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <a href="../items/<%= item.id %>" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+<%- include('../partials/footer') %>
